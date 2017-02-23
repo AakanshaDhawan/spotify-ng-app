@@ -3,25 +3,95 @@
     <head>
         <title>Music Search</title>
         <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
+
         <link href='css/app.css' rel='stylesheet' type='text/css'>
         <meta charset="UTF-8">
     </head>
 
-    <body>
+    <body ng-controller="MainCtrl">
+
         <div class="main container">
+          <div class="jumbotron">
             <h1>Spotify Search</h1>
-            <ng-view></ng-view>
+            <p>
+              <!-- Bootstrap is the most popular HTML, CSS, and JS framework for developing
+            responsive, mobile-first projects on the web. -->
+
+            <br/>
+
+
+
+              <tags-input ng-model="tags" display-property="name" placeholder="Add a country" replace-spaces-with-dashes="false">
+                <auto-complete source="loadCountries($query)"
+                               min-length="0"
+                               load-on-focus="true"
+                               load-on-empty="true"
+                               max-results-to-show="32"
+                               template="my-custom-template"></auto-complete>
+              </tags-input>
+
+              <script type="text/ng-template" id="my-custom-template">
+                <div class="left-panel">
+                  <img ng-src="http://mbenford.github.io/ngTagsInput/images/flags/{{data.flag}}" />
+                </div>
+                <div class="right-panel">
+                  <span ng-bind-html="$highlight($getDisplayText())"></span>
+                  <span>({{data.rank}})</span>
+                  <span>{{data.confederation}}</span>
+                </div>
+              </script>
+
+            </p>
+
+
+          </div>
+          <ng-view></ng-view>
+          <!-- <p>This is some text.</p>
+          <p>This is another text.</p> -->
         </div>
 
 
         <script type="text/javascript" src="node_modules/angular/angular.js"></script>
         <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
         <script type="text/javascript" src="node_modules/angular-spotify/dist/angular-spotify.min.js"></script>
+        <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+
+        <script src="http://mbenford.github.io/ngTagsInput/js/ng-tags-input.min.js"></script>
+
 
         <script type="text/javascript" src="app/app.js"></script>
         <script type="text/javascript" src="app/config/config.js"></script>
         <script type="text/javascript" src="app/routes/Routes.js"></script>
         <script type="text/javascript" src="app/controllers/Controller.js"></script>
         <script type="text/javascript" src="app/services/Factory.js"></script>
+
+
+        <script type="text/ng-template" id="tag-template">
+          <div class="tag-template">
+            <div class="left-panel">
+              <img ng-src="http://mbenford.github.io/ngTagsInput/images/flags/{{data.flag}}" ng-if="data.flag" width='20px'/>
+            </div>
+            <div class="right-panel">
+              <span>{{$getDisplayText()}}</span>
+              <a class="remove-button" ng-click="$removeTag()">&#10006;</a>
+            </div>
+          </div>
+        </script>
+
+        <script type="text/ng-template" id="autocomplete-template">
+          <div class="autocomplete-template">
+            <div class="left-panel">
+              <img ng-src="http://mbenford.github.io/ngTagsInput/images/flags/{{data.flag}}" />
+            </div>
+            <div class="right-panel">
+              <span ng-bind-html="$highlight($getDisplayText())"></span>
+              <span>({{data.rank}})</span>
+              <span>{{data.confederation}}</span>
+            </div>
+          </div>
+        </script>
+
     </body>
 </html>

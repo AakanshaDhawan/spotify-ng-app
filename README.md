@@ -1,1 +1,1 @@
-# Simple AngularJS App
+# Angular Music-Search

@@ -1,1 +1,1 @@
-var App = angular.module('App', ['ngRoute', 'spotify']);
+var App = angular.module('App', ['ngRoute', 'spotify', 'ngTagsInput','ui.bootstrap']);

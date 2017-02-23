@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "angular": "~1.4",
+    "angular-route": "~1.2.6",
     "angular-spotify": "^1.4.1",
-    "angular": "~1.2.6",
-    "angular-route": "~1.2.6"
+    "angular-ui-bootstrap": "^2.5.0"
   },
   "devDependencies": {},
   "scripts": {
