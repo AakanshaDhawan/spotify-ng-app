@@ -3,6 +3,22 @@ App.controller('MainCtrl', [
   function ($scope, $timeout,$http) {
 
     $scope.tags = [];
+
+    $scope.searchMode = "album";// or artists
+
+
+    // Will change search mode
+    $scope.switchSearchMode = function()
+    {
+      if (document.getElementById('radioArtists').checked) {
+          $scope.searchMode = "artists";
+      }
+      else if(document.getElementById('radioAlbums').checked){
+          $scope.searchMode = "album";
+      }
+    }
+
+
     $scope.loadAlbums = function($query) {
 
         if($query && $query.length > 0)
@@ -14,6 +30,8 @@ App.controller('MainCtrl', [
                 cache: true,
                 responseType: "json"
               }).then(function(response, status) {
+
+                //console.log(response)
 
                 var albums = response.data.albums !== undefined ? response.data.albums.items : [];
                 var ret = [];
@@ -36,7 +54,8 @@ App.controller('MainCtrl', [
                         "name":albums[i].name,
                         "thumbnail": albums[i].images[2] !== undefined ? albums[i].images[2].url : '',
                         "cover": albums[i].images[0] !== undefined ? albums[i].images[0].url : '',
-                        "id": albums[i].id
+                        "id": albums[i].id//,
+                        //"type": $scope.searchMode
                       })
                     }
                   }
@@ -54,6 +73,7 @@ App.controller('MainCtrl', [
 
 
 
+    // PLAYER
 
       $scope.audioObject = null;
       $scope.idAlbumPlaying = null;
@@ -92,12 +112,19 @@ App.controller('MainCtrl', [
               $scope.isPlaying = true;
               $scope.isPaused  = false;
               $scope.idAlbumPlaying = idAlbum;
+
+              $scope.audioObject.addEventListener("paused", function() { $scope.isPaused  = true;  $scope.isPlaying = false; }, true);
+              $scope.audioObject.addEventListener("playing", function(){ $scope.isPaused  = false; $scope.isPlaying = true; }, true);
+              $scope.audioObject.addEventListener("ended", function() { $scope.isPaused  = true;   $scope.isPlaying = false;  }, true);
             })
       	}
       }
 
       $scope.changePlayingState = function(state)
       {
+
+
+
           if(state === false)
           {
             if($scope.audioObject)
@@ -116,6 +143,11 @@ App.controller('MainCtrl', [
             }
           }
 
+      }
+
+      $scope.checkTest = function(boolChecked){
+
+           alert(boolChecked)
       }
 
 

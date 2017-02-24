@@ -3,11 +3,17 @@
     <h1>Spotify Search</h1>
 
     <p>
-       Create a dynamic playlist, by adding new albums to the field.
+       Create a dynamic playlist by adding albums to the below field.
+
+       <br/>
+       <br/>
+       <div style="float:left">
+         Filter per Artist  <input id="radioArtists" type="radio" name="searchType" ng-value="artists" checked=""  ng-click="switchSearchMode()" />
+         <span style="margin-left:30px">Filter per Album</span>  <input id="radioAlbums" type="radio" name="searchType" ng-value="albums" ng-click="switchSearchMode()" />
+       </div>
 
       <br/>
       <br/>
-
 
     <tags-input ng-model="tags"
                 display-property="name"
@@ -53,33 +59,15 @@
       </div>
     </div>
 
+    <br/>
+    <hr/>
+    David Barrat - GitHub <a href="https://github.com/dbrrt" target="_blank">(dbrrt)</a>
+
 
     </p>
   </div>
 
 
 
+
 </div>
-
-<script type="text/ng-template" id="tag-template">
-  <div class="tag-template">
-    <div class="left-panel">
-      <img ng-src={{data.thumbnail}} ng-if="data.thumbnail" style="width:15px" />
-    </div>
-    <div class="right-panel">
-      <span>{{$getDisplayText()}}</span>
-      <a class="remove-button" ng-click="$removeTag()">&#10006;</a>
-    </div>
-  </div>
-</script>
-
-<script type="text/ng-template" id="autocomplete-template">
-  <div class="autocomplete-template">
-    <div class="left-panel">
-      <img ng-src={{data.thumbnail}} />
-    </div>
-    <div class="right-panel">
-      <span ng-bind-html="$highlight($getDisplayText())"></span>
-    </div>
-  </div>
-</script>
