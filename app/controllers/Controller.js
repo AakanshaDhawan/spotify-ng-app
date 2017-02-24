@@ -11,7 +11,7 @@ App.controller('MainCtrl', [
     $scope.switchSearchMode = function()
     {
       if (document.getElementById('radioArtists').checked) {
-          $scope.searchMode = "artists";
+          $scope.searchMode = "artist";
       }
       else if(document.getElementById('radioAlbums').checked){
           $scope.searchMode = "album";
@@ -23,52 +23,72 @@ App.controller('MainCtrl', [
 
         if($query && $query.length > 0)
         {
-            return $http({
 
-                method : "GET",
-                url : "https://api.spotify.com/v1/search?q=" + escape($query) + "&type=album",
-                cache: true,
-                responseType: "json"
-              }).then(function(response, status) {
+            // Setting query type
+            var typeQuery = "artist";
 
-                //console.log(response)
+            if(document.getElementById('radioArtists').checked)
+            {
+              typeQuery = "artist";
+            }
+            else if(document.getElementById('radioAlbums').checked){
+              typeQuery = "album";
+            }
 
-                var albums = response.data.albums !== undefined ? response.data.albums.items : [];
-                var ret = [];
+            if(typeQuery === "album")
+            {
+              return $http({
 
-                var isIn = function(arr,val)
-                {
-                  for(var j=0; j<arr.length; j++)
+                  method : "GET",
+                  url : "https://api.spotify.com/v1/search?q=" + escape($query) + "&type=album",
+                  cache: true,
+                  responseType: "json"
+                }).then(function(response, status) {
+
+                  console.log(response)
+
+                  var albums = response.data.albums !== undefined ? response.data.albums.items : [];
+                  var ret = [];
+
+                  var isIn = function(arr,val)
                   {
-                    if(arr[j].name === val){return true;}
-                  }
-                  return false;
-                }
-
-                if(albums.length > 0)
-                {
-                  for(var i=0; i < albums.length; i++)
-                  {
-                    if(isIn(ret,albums[i].name) === false){
-                      ret.push({
-                        "name":albums[i].name,
-                        "thumbnail": albums[i].images[2] !== undefined ? albums[i].images[2].url : '',
-                        "cover": albums[i].images[0] !== undefined ? albums[i].images[0].url : '',
-                        "id": albums[i].id//,
-                        //"type": $scope.searchMode
-                      })
+                    for(var j=0; j<arr.length; j++)
+                    {
+                      if(arr[j].name === val){return true;}
                     }
+                    return false;
                   }
-                  return ret;
-                }
-                else {
-                  return []
-                }
-              })
-        }
-        else {
-          return []
-        }
+
+                  if(albums.length > 0)
+                  {
+                    for(var i=0; i < albums.length; i++)
+                    {
+                      if(isIn(ret,albums[i].name) === false){
+                        ret.push({
+                          "name":albums[i].name,
+                          "thumbnail": albums[i].images[2] !== undefined ? albums[i].images[2].url : '',
+                          "cover": albums[i].images[0] !== undefined ? albums[i].images[0].url : '',
+                          "id": albums[i].id//,
+                          //"type": $scope.searchMode
+                        })
+                      }
+                    }
+                    return ret;
+                  }
+                  else {
+                    return []
+                  }
+                })
+
+            }
+
+
+          }// query not defined
+          else {
+            return []
+          }
+
+
     };
 
 
