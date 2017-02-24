@@ -4,12 +4,7 @@ App.controller('MainCtrl', [
 
     //console.log("in controller")
 
-    $scope.tags = [
-      { name: "Brazil", flag: "Brazil.png" },
-      { name: "Italy", flag: "Italy.png" },
-      { name: "Spain", flag: "Spain.png" },
-      { name: "Germany", flag: "Germany.png" },
-    ];
+    $scope.tags = [];
 
     $scope.countries = [
         { "name": "Algeria", "flag": "Algeria.png", "confederation": "CAF", "rank": 21 },
@@ -47,21 +42,105 @@ App.controller('MainCtrl', [
     ];
 
 
-    $scope.loadCountries = function($query) {
+
+    $scope.loadAlbums = function($query) {
 
       //alert($query)
-       return $scope.countries.filter(function(country) {
-         return country.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
-       });
+
+      $http.get('https://api.spotify.com/v1/search/'+$query, { cache: true, data: { q: $query,type: 'album'} })
+
+        if($query && $query.length > 0)
+        {
+            return $http({
+                method : "GET",
+                url : "https://api.spotify.com/v1/search?q=" + $query + "&type=album",
+                responseType: "json"
+                // data: {
+                //   q: $query,
+                //   type: 'album'
+                // }
+              }).then(function(response, status) {
+
+                var albums = response.data.albums.items;
+                var ret = [];
+
+                var isIn = function(arr,val)
+                {
+                  for(var j=0; j<arr.length; j++)
+                  {
+                    if(arr[j].name === val)
+                    {
+                      return true;
+                    }
+                  }
+                  return false;
+                }
 
 
-      // return $http.get('countries.json', { cache: true}).then(function(response) {
-      //   //var countries = response.data;
-      //   var country = $scope.countries;
-      //   return countries.filter(function(country) {
+                if(albums)
+                {
+
+                  for(var i=0; i < albums.length; i++)
+                  {
+                    console.log(albums[i])
+
+                    if(isIn(ret,albums[i].name) === false){
+                      ret.push({
+                        "name":albums[i].name,
+                        "image": albums[i].images[2].url
+                      })
+                    }
+                  }
+
+                  console.log(ret)
+
+
+                  return ret;
+                }
+                else {
+                  return []
+                }
+              })
+              // .then(function(response) {
+              // //console.log(response)
+              // var albums = response.data.albums;
+              //
+              // //console.log(albums)
+              // return albums.filter(function(album) {
+              //       console.log(album)
+              //       return true;
+              //       //return country.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
+              // })
+
+              // return albums.filter(function(album) {
+              //       console.log(album)
+              //       //return country.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
+              // }
+              //   return country.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
+              //});
+              //var countries = response.data;
+              // var country = $scope.countries;
+              // return countries.filter(function(country) {
+              //   return country.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
+              //});
+        }
+        else {
+          return []
+        }
+
+      //   return $scope.countries.filter(function(country) {
       //     return country.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
       //   });
-      // });
+       //
+       //
+       //
+      //  return $scope.countries.filter(function(country) {
+      //    return country.name.toLowerCase().indexOf($query.toLowerCase()) != -1;
+      //  });
+
+
+
+
     };
 
 

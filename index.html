@@ -23,25 +23,19 @@
 
 
 
-              <tags-input ng-model="tags" display-property="name" placeholder="Add a country" replace-spaces-with-dashes="false">
-                <auto-complete source="loadCountries($query)"
-                               min-length="0"
-                               load-on-focus="true"
-                               load-on-empty="true"
-                               max-results-to-show="32"
-                               template="my-custom-template"></auto-complete>
-              </tags-input>
+            <tags-input ng-model="tags"
+                        display-property="name"
+                        placeholder="Add an album"
+                        replace-spaces-with-dashes="false"
+                        template="tag-template">
+              <auto-complete source="loadAlbums($query)"
+                             min-length="0"
+                             load-on-focus="true"
+                             load-on-empty="true"
+                             max-results-to-show="32"
+                             template="autocomplete-template"></auto-complete>
+            </tags-input>
 
-              <script type="text/ng-template" id="my-custom-template">
-                <div class="left-panel">
-                  <img ng-src="http://mbenford.github.io/ngTagsInput/images/flags/{{data.flag}}" />
-                </div>
-                <div class="right-panel">
-                  <span ng-bind-html="$highlight($getDisplayText())"></span>
-                  <span>({{data.rank}})</span>
-                  <span>{{data.confederation}}</span>
-                </div>
-              </script>
 
             </p>
 
@@ -71,7 +65,8 @@
         <script type="text/ng-template" id="tag-template">
           <div class="tag-template">
             <div class="left-panel">
-              <img ng-src="http://mbenford.github.io/ngTagsInput/images/flags/{{data.flag}}" ng-if="data.flag" width='20px'/>
+              <img ng-src={{data.image}} ng-if="data.image" style="width:15px" />
+              <!-- <img ng-src="http://mbenford.github.io/ngTagsInput/images/flags/{{data.flag}}" ng-if="data.flag"/> -->
             </div>
             <div class="right-panel">
               <span>{{$getDisplayText()}}</span>
@@ -83,15 +78,16 @@
         <script type="text/ng-template" id="autocomplete-template">
           <div class="autocomplete-template">
             <div class="left-panel">
-              <img ng-src="http://mbenford.github.io/ngTagsInput/images/flags/{{data.flag}}" />
+              <img ng-src={{data.image}} />
             </div>
             <div class="right-panel">
               <span ng-bind-html="$highlight($getDisplayText())"></span>
-              <span>({{data.rank}})</span>
-              <span>{{data.confederation}}</span>
+              <!-- <span>({{data.rank}})</span>
+              <span>{{data.confederation}}</span> -->
             </div>
           </div>
         </script>
+      </body>
 
     </body>
 </html>
