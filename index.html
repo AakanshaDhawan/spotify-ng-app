@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/app.css">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
+        <link rel="stylesheet" type="text/css" href="http://konsumer.js.org/angular-cardflow/cardflow.min.css" />
 
         <link href='css/app.css' rel='stylesheet' type='text/css'>
         <meta charset="UTF-8">
@@ -12,61 +13,17 @@
 
     <body ng-controller="MainCtrl">
 
-        <div class="main container">
-          <div class="jumbotron">
-            <h1>Spotify Search</h1>
-            <p>
-               Create a dynamic playlist, by adding new albums to the field.
-            <br/>
-
-
-
-            <tags-input ng-model="tags"
-                        display-property="name"
-                        placeholder="Add an album"
-                        replace-spaces-with-dashes="false"
-                        template="tag-template">
-              <auto-complete source="loadAlbums($query)"
-                             min-length="0"
-                             load-on-focus="true"
-                             load-on-empty="true"
-                             max-results-to-show="32"
-                             template="autocomplete-template"></auto-complete>
-            </tags-input>
-
-            <br/>
-
-
-            <div ng-if="tags.length > 0">
-              {{tags}}
-            </div>
-
-            <ul class="pagination">
-             <li><a href="#">1</a></li>
-             <li><a href="#">2</a></li>
-             <li><a href="#">3</a></li>
-             <li><a href="#">4</a></li>
-             <li><a href="#">5</a></li>
-            </ul>
-
-
-            </p>
-
-
-          </div>
-          <ng-view></ng-view>
-          <!-- <p>This is some text.</p>
-          <p>This is another text.</p> -->
-        </div>
+        <ng-view></ng-view>
 
 
         <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular-touch.min.js"></script>
         <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
         <script type="text/javascript" src="node_modules/angular-spotify/dist/angular-spotify.min.js"></script>
         <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
 
         <script src="http://mbenford.github.io/ngTagsInput/js/ng-tags-input.min.js"></script>
-
+        <script src="http://konsumer.js.org/angular-cardflow/cardflow.min.js"></script>
 
         <script type="text/javascript" src="app/app.js"></script>
         <script type="text/javascript" src="app/config/config.js"></script>
@@ -78,8 +35,7 @@
         <script type="text/ng-template" id="tag-template">
           <div class="tag-template">
             <div class="left-panel">
-              <img ng-src={{data.image}} ng-if="data.image" style="width:15px" />
-              <!-- <img ng-src="http://mbenford.github.io/ngTagsInput/images/flags/{{data.flag}}" ng-if="data.flag"/> -->
+              <img ng-src={{data.thumbnail}} ng-if="data.thumbnail" style="width:15px" />
             </div>
             <div class="right-panel">
               <span>{{$getDisplayText()}}</span>
@@ -91,12 +47,10 @@
         <script type="text/ng-template" id="autocomplete-template">
           <div class="autocomplete-template">
             <div class="left-panel">
-              <img ng-src={{data.image}} />
+              <img ng-src={{data.thumbnail}} />
             </div>
             <div class="right-panel">
               <span ng-bind-html="$highlight($getDisplayText())"></span>
-              <!-- <span>({{data.rank}})</span>
-              <span>{{data.confederation}}</span> -->
             </div>
           </div>
         </script>

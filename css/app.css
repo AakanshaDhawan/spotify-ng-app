@@ -21,3 +21,8 @@ html, body
 .right-panel span:first-child {
   font-size: 12px;
 }
+
+[deferred-cloak], [data-deferred-cloak], [x-deferred-cloak], .deferred-cloak
+{
+    display: none;
+}

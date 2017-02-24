@@ -1,1 +1,53 @@
-<p></p>
+<div class="main container">
+  <div class="jumbotron"  style="border-radius:0px">
+    <h1>Spotify Search</h1>
+    <p>
+       Create a dynamic playlist, by adding new albums to the field.
+    <br/>
+
+
+
+    <tags-input ng-model="tags"
+                display-property="name"
+                placeholder="Add an album"
+                replace-spaces-with-dashes="false"
+                template="tag-template">
+      <auto-complete source="loadAlbums($query)"
+                     min-length="0"
+                     load-on-focus="true"
+                     load-on-empty="true"
+                     max-results-to-show="32"
+                     template="autocomplete-template"></auto-complete>
+    </tags-input>
+
+    <br/>
+
+
+
+    <cardflow model="cardflow" class="watch-demo">
+        <div class="cardflow-card" ng-repeat="card in cardflow.cards" style="background-image: url( {{card.image}} )">
+            {{ card.title }}
+        </div>
+</cardflow>
+
+
+        <!-- <cardflow model="cardflow" class="watch-demo">
+              <div ng-id="{{card.id}}" class="cardflow-card" ng-repeat="card in tags" style="background-image: url( {{card.cover}} )" ng-click="playAlbum(card.id)">
+                  Toto
+              </div>
+        </cardflow>   -->
+
+<!--
+    <ul class="pagination">
+     <li><a href="#">1</a></li>
+     <li><a href="#">2</a></li>
+     <li><a href="#">3</a></li>
+     <li><a href="#">4</a></li>
+     <li><a href="#">5</a></li>
+    </ul> -->
+
+
+    </p>
+  </div>
+
+</div>
