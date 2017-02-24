@@ -6,54 +6,19 @@ App.controller('MainCtrl', [
 
     $scope.tags = [];
 
-    $scope.countries = [
-        { "name": "Algeria", "flag": "Algeria.png", "confederation": "CAF", "rank": 21 },
-        { "name": "Argentina", "flag": "Argentina.png", "confederation": "CONMEBOL", "rank": 5 },
-        { "name": "Australia", "flag": "Australia.png", "confederation": "AFC", "rank": 32 },
-        { "name": "Belgium", "flag": "Belgium.png", "confederation": "UEFA", "rank": 11 },
-        { "name": "Bosnia and Herzegovina", "flag": "Bosnia-and-Herzegovina.png", "confederation": "UEFA", "rank": 20 },
-        { "name": "Brazil", "flag": "Brazil.png", "confederation": "CONMEBOL", "rank": 3 },
-        { "name": "Cameroon", "flag": "Cameroon.png", "confederation": "CAF", "rank": 30 },
-        { "name": "Chile", "flag": "Chile.png", "confederation": "CONMEBOL", "rank": 14 },
-        { "name": "Colombia", "flag": "Colombia.png", "confederation": "CONMEBOL", "rank": 8 },
-        { "name": "Costa Rica", "flag": "Costa-Rica.png", "confederation": "CONCACAF", "rank": 24 },
-        { "name": "Croatia", "flag": "Croatia.png", "confederation": "UEFA", "rank": 17 },
-        { "name": "Ecuador", "flag": "Ecuador.png", "confederation": "CONMEBOL", "rank": 23 },
-        { "name": "England", "flag": "England.png", "confederation": "UEFA", "rank": 10 },
-        { "name": "France", "flag": "France.png", "confederation": "UEFA", "rank": 16 },
-        { "name": "Germany", "flag": "Germany.png", "confederation": "UEFA", "rank": 2 },
-        { "name": "Ghana", "flag": "Ghana.png", "confederation": "CAF", "rank": 26 },
-        { "name": "Greece", "flag": "Greece.png", "confederation": "UEFA", "rank": 12 },
-        { "name": "Honduras", "flag": "Honduras.png", "confederation": "CONCACAF", "rank": 25 },
-        { "name": "Iran", "flag": "Iran.png", "confederation": "AFC", "rank": 27 },
-        { "name": "Italy", "flag": "Italy.png", "confederation": "UEFA", "rank": 9 },
-        { "name": "Ivory Coast", "flag": "Cote-dIvoire.png", "confederation": "CAF", "rank": 22 },
-        { "name": "Japan", "flag": "Japan.png", "confederation": "AFC", "rank": 29 },
-        { "name": "Mexico", "flag": "Mexico.png", "confederation": "CONCACAF", "rank": 19 },
-        { "name": "Netherlands", "flag": "Netherlands.png", "confederation": "UEFA", "rank": 15 },
-        { "name": "Nigeria", "flag": "Nigeria.png", "confederation": "CAF", "rank": 28 },
-        { "name": "Portugal", "flag": "Portugal.png", "confederation": "UEFA", "rank": 4 },
-        { "name": "Russia", "flag": "Russia.png", "confederation": "UEFA", "rank": 18 },
-        { "name": "South Korea", "flag": "South-Korea.png", "confederation": "AFC", "rank": 31 },
-        { "name": "Spain", "flag": "Spain.png", "confederation": "UEFA", "rank": 1 },
-        { "name": "Switzerland", "flag": "Switzerland.png", "confederation": "UEFA", "rank": 6 },
-        { "name": "United States", "flag": "United-States.png", "confederation": "CONCACAF", "rank": 13 },
-        { "name": "Uruguay", "flag": "Uruguay.png", "confederation": "CONMEBOL", "rank": 7 }
-    ];
-
-
-
     $scope.loadAlbums = function($query) {
 
       //alert($query)
 
-      $http.get('https://api.spotify.com/v1/search/'+$query, { cache: true, data: { q: $query,type: 'album'} })
+      //$http.get('https://api.spotify.com/v1/search/'+$query, { cache: true, data: { q: $query,type: 'album'} })
 
         if($query && $query.length > 0)
         {
             return $http({
+
                 method : "GET",
-                url : "https://api.spotify.com/v1/search?q=" + $query + "&type=album",
+                url : "https://api.spotify.com/v1/search?q=" + escape($query) + "&type=album",
+                cache: true,
                 responseType: "json"
                 // data: {
                 //   q: $query,
@@ -87,7 +52,8 @@ App.controller('MainCtrl', [
                     if(isIn(ret,albums[i].name) === false){
                       ret.push({
                         "name":albums[i].name,
-                        "image": albums[i].images[2].url
+                        "image": albums[i].images[2].url,
+                        "id": albums[i].id
                       })
                     }
                   }
