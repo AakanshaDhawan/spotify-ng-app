@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
         <link rel="stylesheet" type="text/css" href="http://konsumer.js.org/angular-cardflow/cardflow.min.css" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
         <link href='css/app.css' rel='stylesheet' type='text/css'>
         <meta charset="UTF-8">
@@ -17,7 +18,7 @@
 
 
         <script type="text/javascript" src="node_modules/angular/angular.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular-touch.min.js"></script>
+        <script type="text/javascript" src="node_modules/angular-module-touch/angular-touch.js"></script>
         <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
         <script type="text/javascript" src="node_modules/angular-spotify/dist/angular-spotify.min.js"></script>
         <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
@@ -32,28 +33,6 @@
         <script type="text/javascript" src="app/services/Factory.js"></script>
 
 
-        <script type="text/ng-template" id="tag-template">
-          <div class="tag-template">
-            <div class="left-panel">
-              <img ng-src={{data.thumbnail}} ng-if="data.thumbnail" style="width:15px" />
-            </div>
-            <div class="right-panel">
-              <span>{{$getDisplayText()}}</span>
-              <a class="remove-button" ng-click="$removeTag()">&#10006;</a>
-            </div>
-          </div>
-        </script>
-
-        <script type="text/ng-template" id="autocomplete-template">
-          <div class="autocomplete-template">
-            <div class="left-panel">
-              <img ng-src={{data.thumbnail}} />
-            </div>
-            <div class="right-panel">
-              <span ng-bind-html="$highlight($getDisplayText())"></span>
-            </div>
-          </div>
-        </script>
       </body>
 
     </body>

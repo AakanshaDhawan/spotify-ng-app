@@ -26,3 +26,10 @@ html, body
 {
     display: none;
 }
+
+
+tags-input .tags
+{
+  padding:20px;
+  border-radius:80px;
+}

@@ -34,8 +34,8 @@ App.controller('MainCtrl', [
                     if(isIn(ret,albums[i].name) === false){
                       ret.push({
                         "name":albums[i].name,
-                        "thumbnail": albums[i].images[2].url,
-                        "cover": albums[i].images[0].url,
+                        "thumbnail": albums[i].images[2] !== undefined ? albums[i].images[2].url : '',
+                        "cover": albums[i].images[0] !== undefined ? albums[i].images[0].url : '',
                         "id": albums[i].id
                       })
                     }
@@ -52,24 +52,70 @@ App.controller('MainCtrl', [
         }
     };
 
-    $scope.cardflow={};
-      // I use a timeout so I have access to all the elements
-      $timeout(function(){
-          $scope.$watch(function(){ return $scope.cardflow.current; }, function(){
-              console.log($scope.cardflow);
-          });
-      }, 100);
 
-      $scope.cardflow.cards = [];
-      var types = ['cats','fashion','nature','food','abstract','nightlife'];
-      for (var i=0; i<40; i++){
-          var t = types[i % types.length];
-          $scope.cardflow.cards.push({image:'http://lorempixel.com/198/198/' + t + '/'+((i%10)+1), title: t});
+
+
+      $scope.audioObject = null;
+      $scope.idAlbumPlaying = null;
+
+      // Manage state playing
+      $scope.isPlaying = false;
+      $scope.isPaused  = false;
+
+
+      $scope.playAlbum = function(idAlbum){
+
+      	if($scope.audioObject)
+      	{
+      		$scope.audioObject.pause();
+          $scope.isPaused  = true;
+          $scope.isPlaying = false;
+      	}
+
+      	if(idAlbum === $scope.idAlbumPlaying)
+      	{
+      		$scope.idAlbumPlaying = null;
+      	}
+      	else {
+
+          return $http({
+
+              method : "GET",
+              url : "https://api.spotify.com/v1/albums/" + idAlbum,
+              cache: true,
+              responseType: "json"
+            }).then(function(response){
+              //console.log(response)
+
+              $scope.audioObject = new Audio(response.data.tracks.items[0].preview_url);
+              $scope.audioObject.play();
+              $scope.isPlaying = true;
+              $scope.isPaused  = false;
+              $scope.idAlbumPlaying = idAlbum;
+            })
+      	}
       }
 
-      $scope.playAlbum = function(id)
+      $scope.changePlayingState = function(state)
       {
-        alert(id);
+          if(state === false)
+          {
+            if($scope.audioObject)
+            {
+              $scope.audioObject.pause();
+              $scope.isPaused  = true;
+              $scope.isPlaying = false;
+            }
+          }
+          else {
+            if($scope.audioObject)
+            {
+              $scope.audioObject.play();
+              $scope.isPaused  = false;
+              $scope.isPlaying = true;
+            }
+          }
+
       }
 
 

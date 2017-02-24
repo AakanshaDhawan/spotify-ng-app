@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "angular": "~1.4",
+    "angular-module-touch": "^1.2.19",
     "angular-route": "~1.2.6",
     "angular-spotify": "^1.4.1",
     "angular-ui-bootstrap": "^2.5.0"

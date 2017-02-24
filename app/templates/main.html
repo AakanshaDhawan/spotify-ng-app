@@ -1,10 +1,12 @@
-<div class="main container">
-  <div class="jumbotron"  style="border-radius:0px">
+<div class="main container" style="">
+  <div  style="border-radius:0px;">
     <h1>Spotify Search</h1>
+
     <p>
        Create a dynamic playlist, by adding new albums to the field.
-    <br/>
 
+      <br/>
+      <br/>
 
 
     <tags-input ng-model="tags"
@@ -20,34 +22,64 @@
                      template="autocomplete-template"></auto-complete>
     </tags-input>
 
+
+
+
+    <div style="display:none">
+      {{tags}}
+    </div>
+
+
+    <br/>
+
+    <cardflow model="tags" mode="swipeSnapKinetic" >
+        <div ng-id="{{card.id}}" class="cardflow-card" ng-repeat="card in tags" style="background-image: url( {{card.cover}} )" ng-click="playAlbum(card.id)">
+            {{ card.title }}
+        </div>
+    </cardflow>
+
+    <br/>
     <br/>
 
 
+    <br/>
 
-    <cardflow model="cardflow" class="watch-demo">
-        <div class="cardflow-card" ng-repeat="card in cardflow.cards" style="background-image: url( {{card.image}} )">
-            {{ card.title }}
-        </div>
-</cardflow>
-
-
-        <!-- <cardflow model="cardflow" class="watch-demo">
-              <div ng-id="{{card.id}}" class="cardflow-card" ng-repeat="card in tags" style="background-image: url( {{card.cover}} )" ng-click="playAlbum(card.id)">
-                  Toto
-              </div>
-        </cardflow>   -->
-
-<!--
-    <ul class="pagination">
-     <li><a href="#">1</a></li>
-     <li><a href="#">2</a></li>
-     <li><a href="#">3</a></li>
-     <li><a href="#">4</a></li>
-     <li><a href="#">5</a></li>
-    </ul> -->
+    <div style="width:100%; text-align:center" ng-if="audioObject">
+      <div ng-if="isPaused">
+      <button class="btn btn-primary btn-large" style="width:160px;height:60px" ng-click="changePlayingState(true)"><i class="fa fa-play fa-lg"></i></button>
+      </div>
+      <div ng-if="isPlaying">
+      <button class="btn btn-danger btn-large" style="width:160px;height:60px" ng-click="changePlayingState(false)"><i class="fa fa-pause fa-lg"></i></button>
+      </div>
+    </div>
 
 
     </p>
   </div>
 
+
+
 </div>
+
+<script type="text/ng-template" id="tag-template">
+  <div class="tag-template">
+    <div class="left-panel">
+      <img ng-src={{data.thumbnail}} ng-if="data.thumbnail" style="width:15px" />
+    </div>
+    <div class="right-panel">
+      <span>{{$getDisplayText()}}</span>
+      <a class="remove-button" ng-click="$removeTag()">&#10006;</a>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="autocomplete-template">
+  <div class="autocomplete-template">
+    <div class="left-panel">
+      <img ng-src={{data.thumbnail}} />
+    </div>
+    <div class="right-panel">
+      <span ng-bind-html="$highlight($getDisplayText())"></span>
+    </div>
+  </div>
+</script>
