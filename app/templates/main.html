@@ -50,8 +50,9 @@
                   <div class="col-sm-3">
                     <div class="card" style="width:100%">
                       <a href="https://play.spotify.com/artist/{{artist.id}}" target="_blank">
-                        <div style="background-image:url({{artist.images[0].url}});height:150px;width:100%">
-                        <img src="{{artist.images[0].url}}"  style="width:100%;display:none"/>
+                        <div style="background-image:url({{artist.images[0].url}});height:220px;width:100%" ng-if="artist.images[0].url">
+                        </div>
+                        <div style="height:220px;width:100%" ng-if="!artist.images[0].url">
                         </div>
                       </a>
                       <div class="container">

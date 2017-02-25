@@ -50,6 +50,7 @@ App.controller('MainCtrl', [
       }
       else {
           $scope.resultsArtistSearch = []
+          $scope.chunkedDataArtistSearch = []
       }
     }
 
