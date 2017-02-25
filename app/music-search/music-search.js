@@ -3,7 +3,7 @@
 angular.module('MusicSearch', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {
+  $routeProvider.when('/music-search', {
     templateUrl: 'app/music-search/music-search.html',
     controller: 'MusicSearchCtrl'
   })

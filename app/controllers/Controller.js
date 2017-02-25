@@ -6,6 +6,19 @@ App.controller('MainCtrl', [
     $scope.inputArtist = "";
 
     $scope.resultsArtistSearch = [];
+    $scope.resultsArtistSearchwCover = [];
+
+    // Will allow to display properly rows in the view
+    $scope.chunk = function(arr, size) {
+      var newArr = [];
+      for (var i=0; i<arr.length; i+=size) {
+        newArr.push(arr.slice(i, i+size));
+      }
+      return newArr;
+    }
+
+    $scope.chunkedDataArtistSearch = [];
+
 
     $scope.logArtist = function()
     {
@@ -21,7 +34,17 @@ App.controller('MainCtrl', [
             var result = response.data.items;
             //console.log(response.data.artists.items);
             $scope.resultsArtistSearch = response.data.artists.items;
-            //console.log($scope.resultsArtistSearch)
+
+            // for(var i=0; i < $scope.resultsArtistSearch.length ; i++)
+            // {
+            //     if($scope.resultsArtistSearch[i].images[0].url !== undefined)
+            //     {
+            //        $scope.resultsArtistSearchwCover.push($scope.resultsArtistSearch[i])
+            //     }
+            // }
+            //
+            $scope.chunkedDataArtistSearch = $scope.chunk($scope.resultsArtistSearch, 4);
+            // console.log($scope.chunkedDataArtistSearch)
           })
 
       }

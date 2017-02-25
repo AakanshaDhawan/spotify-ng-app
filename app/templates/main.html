@@ -40,30 +40,38 @@
     <tabs>
       <pane title="Search Results">
         <br/>
-        Nb result(s) : {{resultsArtistSearch.length}}
+        Nb result(s) : {{chunkedDataArtistSearch.length}}
         <br/>
         <br/>
-        <div class="row">
-          <div ng-repeat="artist in resultsArtistSearch">
-                <div class="col-sm-4" ng-if="artist.images[0].url">
-                  <div class="card">
-                    <a href="https://play.spotify.com/artist/{{artist.id}}" target="_blank">
-                      <img src="{{artist.images[0].url}}" alt="Avatar" style="width:100%">
-                    </a>
-                    <div class="container">
-                      <br/>
-                      <p style="font-weight:900">{{artist.name}}</p>
-                      <p><span style="text-decoration:underline">Followers :</span> &nbsp; {{artist.followers.total}}</p>
-                      <span class="capitalize" ng-if="artist.genres[0]"><span style="text-decoration:underline">Genre : </span>&nbsp; {{artist.genres[0]}}</span>
-                      <br ng-if="artist.genres[0]" />
-                      <br/>
-                      <button class="btn btn-warning btn-large" ng-click="seeAlbums('{{artist.id}}')"><i class="fa fa-plus-square"></i> Albums</button>
-                      <br/>
+
+          <div ng-repeat="artistRow in chunkedDataArtistSearch" ng-if="resultsArtistSearch.length > 0">
+            <div class="row" style="margin-top:10px">
+              <div ng-repeat="artist in artistRow">
+                  <div class="col-sm-3">
+                    <div class="card" style="width:100%">
+                      <a href="https://play.spotify.com/artist/{{artist.id}}" target="_blank">
+                        <div style="background-image:url({{artist.images[0].url}});height:150px;width:100%">
+                        <img src="{{artist.images[0].url}}"  style="width:100%;display:none"/>
+                        </div>
+                      </a>
+                      <div class="container">
+                        <br/>
+                        <p style="font-weight:900">{{artist.name}}</p>
+                        <p><span style="text-decoration:underline">Followers :</span> &nbsp; {{artist.followers.total}}</p>
+                        <span class="capitalize" ng-if="artist.genres[0]"><span style="text-decoration:underline">Genre : </span>&nbsp; <span ng-if="artist.genres[0]" >{{artist.genres[0]}}</span></span>
+                        <br/>
+                        <br/>
+                        <button class="btn btn-warning btn-large" ng-click="seeAlbums('{{artist.id}}')"><i class="fa fa-plus-square"></i> Albums</button>
+                        <br/>
+                      </div>
                     </div>
                   </div>
-                </div>
-          </div>
+              </div>
+            </div>
         </div>
+
+
+
       </pane>
 
       <pane title="Player">

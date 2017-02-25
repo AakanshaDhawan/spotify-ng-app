@@ -3,6 +3,7 @@ App = angular.module('App', ['ngRoute',
                                 'ngTagsInput',
                                 'ui.bootstrap',
                                 'angular-cardflow',
+                                'ngMasonry',
                                 'MusicSearch']);
 
 // App.directive("deferredCloak", function () {
