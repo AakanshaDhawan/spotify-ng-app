@@ -17,7 +17,7 @@
 
 
     <div id="tagInputArtists">
-      <input type="text" ng-model="format" class="artist-input form-control" placeholder="Search an Artist">
+      <input type="text" ng-model="inputArtist" class="artist-input form-control" placeholder="Search an Artist" ng-change="logArtist()" />
     </div>
 
 
@@ -50,6 +50,23 @@
 
       <pane title="Search Results">
 
+        <br/>
+        Nb result(s) : {{resultsArtistSearch.length}}
+        <br/>
+        <br/>
+        <div class="row">
+          <div class="col-sm-4">.col-sm-4</div>
+          <div class="col-sm-4">.col-sm-4</div>
+          <div class="col-sm-4">.col-sm-4</div>
+          <div class="col-sm-4">.col-sm-4</div>
+          <div class="col-sm-4">.col-sm-4</div>
+          <div class="col-sm-4">.col-sm-4</div>
+          <div class="col-sm-4">.col-sm-4</div>
+          <div class="col-sm-4">.col-sm-4</div>
+          <div class="col-sm-4">.col-sm-4</div>
+        </div>
+
+        {{resultsArtistSearch}}
       </pane>
 
       <pane title="Player">

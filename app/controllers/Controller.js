@@ -3,8 +3,41 @@ App.controller('MainCtrl', [
   function ($scope, $timeout,$http) {
 
     $scope.tags = [];
+    $scope.inputArtist = "";
+
+    $scope.resultsArtistSearch = [];
+
+    $scope.logArtist = function()
+    {
+      //console.log($scope.inputArtist)
+      if($scope.inputArtist.length > 0)
+      {
+        return $http({
+            method : "GET",
+            url : "https://api.spotify.com/v1/search?q=" + escape($scope.inputArtist) + "&type=artist",
+            cache: true,
+            responseType: "json"
+          }).then(function(response, status) {
+            var result = response.data.items;
+            //console.log(response.data.artists.items);
+            $scope.resultsArtistSearch = response.data.artists.items;
+            console.log($scope.resultsArtistSearch)
+          })
+
+      }
+      else {
+          $scope.resultsArtistSearch = []
+      }
+
+
+
+
+    }
+
 
     $scope.searchMode = "album";// or artists
+
+
 
 
     // Will change search mode
@@ -88,16 +121,11 @@ App.controller('MainCtrl', [
                     return []
                   }
                 })
-
             }
-
-
           }// query not defined
           else {
             return []
           }
-
-
     };
 
 
@@ -151,8 +179,6 @@ App.controller('MainCtrl', [
 
       $scope.changePlayingState = function(state)
       {
-
-
 
           if(state === false)
           {
