@@ -21,21 +21,47 @@ App.controller('MainCtrl', [
             var result = response.data.items;
             //console.log(response.data.artists.items);
             $scope.resultsArtistSearch = response.data.artists.items;
-            console.log($scope.resultsArtistSearch)
+            //console.log($scope.resultsArtistSearch)
           })
 
       }
       else {
           $scope.resultsArtistSearch = []
       }
+    }
+
+    $scope.seeAlbums = function(id)
+    {
+      return $http({
+          method : "GET",
+          url : "https://api.spotify.com/v1/artists/"+id+"/albums",
+          cache: true,
+          responseType: "json"
+        }).then(function(response, status) {
+          //console.log(response.data.items)
+          var albums = response.data.items;
+          var albumsList = [];
+
+          for(var i=0; i < albums.length ; i++)
+          {
+              albumsList.push(albums[i].name);
+          }
+
+          alert(JSON.stringify(albumsList));
+          // var result = response.data.items;
+          //console.log(response.data.artists.items);
+          // $scope.resultsArtistSearch = response.data.artists.items;
+          //console.log(JSON.stringify(response))
+        })
 
 
-
-
+      //alert(id);
     }
 
 
-    $scope.searchMode = "album";// or artists
+
+    // Albums
+    $scope.searchMode = "album";
 
 
 
@@ -204,7 +230,6 @@ App.controller('MainCtrl', [
 
            alert(boolChecked)
       }
-
 
   }
 

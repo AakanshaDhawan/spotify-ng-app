@@ -1,4 +1,4 @@
-var App = angular.module('App', ['ngRoute', 'spotify', 'ngTagsInput','ui.bootstrap','angular-cardflow','wu.masonry']);
+var App = angular.module('App', ['ngRoute', 'spotify', 'ngTagsInput','ui.bootstrap','angular-cardflow']);
 
 App.directive("deferredCloak", function () {
     return {
