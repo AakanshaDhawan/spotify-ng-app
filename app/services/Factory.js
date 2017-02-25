@@ -1,4 +1,4 @@
-App.factory('CustomerFactory', function () {
+App.factory('MusicSearchFactory', function () {
   var factory = {};
   // var customers = [
   //   { name : 'Steve Jobs', city : 'San Francisco' },

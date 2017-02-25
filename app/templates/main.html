@@ -40,7 +40,7 @@
     <tabs>
       <pane title="Search Results">
         <br/>
-        Nb result(s) : {{chunkedDataArtistSearch.length}}
+        Nb result(s) : {{resultsArtistSearch.length}}
         <br/>
         <br/>
 
@@ -52,7 +52,8 @@
                       <a href="https://play.spotify.com/artist/{{artist.id}}" target="_blank">
                         <div style="background-image:url({{artist.images[0].url}});height:220px;width:100%" ng-if="artist.images[0].url">
                         </div>
-                        <div style="height:220px;width:100%" ng-if="!artist.images[0].url">
+                        <div style="background-image:url('http://www.logo-designer.co/wp-content/uploads/2015/03/Spotify-logo-design-Collins-New-York-2.png');height:220px;width:100%" ng-if="!artist.images[0].url">
+
                         </div>
                       </a>
                       <div class="container">

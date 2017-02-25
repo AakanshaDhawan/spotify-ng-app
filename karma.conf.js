@@ -14,13 +14,13 @@ module.exports = function(config) {
       'node_modules/angular-module-touch/angular-touch.js',
       'lib/ng-tags-input.min.js',
       'lib/cardflow.min.js',
-      'app/app.js',
       'app/config/config.js',
       'app/routes/Routes.js',
       'app/controllers/Controller.js',
       'app/services/Factory.js',
       'app/music-search/music-search.js',
-      'app/music-search/music-search_test.js'
+      'app/music-search/music-search_test.js',
+      'app/app.js'
 
     ],
 
