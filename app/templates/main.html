@@ -55,19 +55,29 @@
         <br/>
         <br/>
         <div class="row">
-          <div class="col-sm-4">.col-sm-4</div>
-          <div class="col-sm-4">.col-sm-4</div>
-          <div class="col-sm-4">.col-sm-4</div>
-          <div class="col-sm-4">.col-sm-4</div>
-          <div class="col-sm-4">.col-sm-4</div>
-          <div class="col-sm-4">.col-sm-4</div>
-          <div class="col-sm-4">.col-sm-4</div>
-          <div class="col-sm-4">.col-sm-4</div>
-          <div class="col-sm-4">.col-sm-4</div>
+          <div ng-repeat="artist in resultsArtistSearch">
+
+            <a href="https://play.spotify.com/artist/{{artist.id}}" target="_blank">
+              <div class="col-sm-3" ng-if="artist.images[0].url">
+                <div class="card">
+                  <img src="{{artist.images[0].url}}" alt="Avatar" style="width:100%">
+                  <div class="container">
+                    <br/>
+                    <p style="font-weight:900">{{artist.name}}</p>
+                    <p><span style="text-decoration:underline">Followers :</span> &nbsp; {{artist.followers.total}}</p>
+                    <span class="capitalize" ng-if="artist.genres[0]"><span style="text-decoration:underline">Genre : </span>&nbsp; {{artist.genres[0]}}</span>
+                    <br ng-if="artist.genres[0]" />
+                  </div>
+                </div>
+              </div>
+            </a>
+
+          </div>
         </div>
 
-        {{resultsArtistSearch}}
+        <!-- {{resultsArtistSearch}} -->
       </pane>
+
 
       <pane title="Player">
 
@@ -96,9 +106,7 @@
         </div>
 
       </pane>
-      <pane title="Artist Details">
-        <!-- <div>This is the content of the second tab.</div> -->
-      </pane>
+
     </tabs>
 
 
