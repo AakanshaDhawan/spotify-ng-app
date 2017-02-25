@@ -12,9 +12,18 @@ App.controller('MainCtrl', [
     {
       if (document.getElementById('radioArtists').checked) {
           $scope.searchMode = "artist";
+
+
+          document.getElementById("tagInputAlbums").style.display = "none";
+          document.getElementById("tagInputArtists").style.display = "block";
+
       }
       else if(document.getElementById('radioAlbums').checked){
           $scope.searchMode = "album";
+
+          document.getElementById("tagInputAlbums").style.display = "block";
+          document.getElementById("tagInputArtists").style.display = "none";
+
       }
     }
 
@@ -135,7 +144,7 @@ App.controller('MainCtrl', [
 
               $scope.audioObject.addEventListener("paused", function() { $scope.isPaused  = true;  $scope.isPlaying = false; }, true);
               $scope.audioObject.addEventListener("playing", function(){ $scope.isPaused  = false; $scope.isPlaying = true; }, true);
-              $scope.audioObject.addEventListener("ended", function() { $scope.isPaused  = true;   $scope.isPlaying = false;  }, true);
+
             })
       	}
       }
@@ -172,4 +181,51 @@ App.controller('MainCtrl', [
 
 
   }
-]);
+
+]).directive('tabs', function() {
+    // Directive for Bootstrap tabs
+    return {
+      restrict: 'E',
+      transclude: true,
+      scope: {},
+      controller: [ "$scope", function($scope) {
+        var panes = $scope.panes = [];
+
+        $scope.select = function(pane) {
+          angular.forEach(panes, function(pane) {
+            pane.selected = false;
+          });
+          pane.selected = true;
+        }
+
+        this.addPane = function(pane) {
+          if (panes.length == 0) $scope.select(pane);
+          panes.push(pane);
+        }
+      }],
+      template:
+        '<div class="tabbable">' +
+          '<ul class="nav nav-tabs">' +
+            '<li ng-repeat="pane in panes" ng-class="{active:pane.selected}">'+
+              '<a href="" ng-click="select(pane)">{{pane.title}}</a>' +
+            '</li>' +
+          '</ul>' +
+          '<div class="tab-content" ng-transclude></div>' +
+        '</div>',
+      replace: true
+    };
+  }).directive('pane', function() {
+    return {
+      require: '^tabs',
+      restrict: 'E',
+      transclude: true,
+      scope: { title: '@' },
+      link: function(scope, element, attrs, tabsCtrl) {
+        tabsCtrl.addPane(scope);
+      },
+      template:
+        '<div class="tab-pane" ng-class="{active: selected}" ng-transclude>' +
+        '</div>',
+      replace: true
+    };
+  })

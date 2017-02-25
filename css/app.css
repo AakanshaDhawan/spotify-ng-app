@@ -33,3 +33,6 @@ tags-input .tags
   padding:20px;
   border-radius:80px;
 }
+
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
