@@ -1,0 +1,1 @@
+sudo webdriver-manager update
