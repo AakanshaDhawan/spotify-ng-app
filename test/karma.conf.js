@@ -2,7 +2,7 @@
 module.exports = function(config) {
   config.set({
 
-    basePath: '.',
+    basePath: '../',
 
     files: [
       'node_modules/jquery/dist/jquery.js',

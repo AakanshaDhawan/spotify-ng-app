@@ -9,7 +9,7 @@ describe('testing music-search app', function() {
   });
 
   it('should display app properly, so Title should be visible', function() {
-    browser.get('http://localhost:8000/#/toto');
+    browser.get('http://localhost:8000/');
     // Checks display App
     expect(element.all(by.css('h1')).first().getText()).
     toMatch(/Music Search/);
@@ -21,6 +21,5 @@ describe('testing music-search app', function() {
     // Checks that artists cards are displayed
     expect(browser.isElementPresent(by.css('card')))
   });
-
 
 });
