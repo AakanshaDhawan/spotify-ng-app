@@ -1,7 +1,9 @@
-/*
-* Directives
-* Needed for Bootstrap Tabs
-*/
+// @author {David Barrat}
+// @date {FEB2017}
+//
+//  Directives
+//  Needed for Bootstrap Tabs
+//
 MusicSearch.directive('tabs', function() {
     return {
       restrict: 'E',

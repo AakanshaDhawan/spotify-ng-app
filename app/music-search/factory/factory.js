@@ -1,3 +1,5 @@
+// @author {David Barrat}
+// @date {FEB2017}
 /*
 * MusicSearch Factory
 */

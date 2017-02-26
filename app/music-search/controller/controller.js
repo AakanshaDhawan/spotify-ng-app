@@ -1,3 +1,5 @@
+// @author {David Barrat}
+// @date {FEB2017}
 //
 //  MusicSearch Controller
 //
@@ -13,15 +15,6 @@ MusicSearch.controller('MusicSearchCtrl', [ '$scope', '$timeout', '$http','Music
     // Helper to display artists on rows
     $scope.chunkedDataArtistSearch = [];
 
-
-    // Test function to be deleted
-    // $scope.getName = function(inputArtist)
-    // {
-    //   MusicSearchFactory.searchAlbums(inputArtist).then(function(data){
-    //     console.log(data);
-    //   });
-    // }
-
     $scope.logArtist = function()
     {
       if($scope.inputArtist.length > 0)
@@ -31,7 +24,6 @@ MusicSearch.controller('MusicSearchCtrl', [ '$scope', '$timeout', '$http','Music
           $scope.resultsArtistSearch = response.data.artists.items;
           $scope.chunkedDataArtistSearch = MusicSearchFactory.chunk($scope.resultsArtistSearch, 4);
         })
-
       }
       else {
           $scope.resultsArtistSearch = []
@@ -50,29 +42,22 @@ MusicSearch.controller('MusicSearchCtrl', [ '$scope', '$timeout', '$http','Music
             {
                 albumsList.push(albums[i].name);
             }
-
+            // To be improved with a modal
             alert(JSON.stringify(albumsList));
-
-          })
+          });
     }
 
 
-    // Will change search mode
+    // Will change UI input field
     $scope.switchSearchMode = function()
     {
       if (document.getElementById('radioArtists').checked) {
-          //$scope.searchMode = "artist";
-
           document.getElementById("tagInputAlbums").style.display = "none";
           document.getElementById("tagInputArtists").style.display = "block";
-
       }
       else if(document.getElementById('radioAlbums').checked){
-          //$scope.searchMode = "album";
-
           document.getElementById("tagInputAlbums").style.display = "block";
           document.getElementById("tagInputArtists").style.display = "none";
-
       }
     }
 
@@ -84,12 +69,8 @@ MusicSearch.controller('MusicSearchCtrl', [ '$scope', '$timeout', '$http','Music
 
             return MusicSearchFactory.searchAlbums($query).then(function(response) {
 
-                //console.log(response)
-
                 var albums = response.data.albums !== undefined ? response.data.albums.items : [];
                 var ret = [];
-
-                console.log(albums)
 
                 var isIn = function(arr,val)
                 {
@@ -110,7 +91,6 @@ MusicSearch.controller('MusicSearchCtrl', [ '$scope', '$timeout', '$http','Music
                         "thumbnail": albums[i].images[2] !== undefined ? albums[i].images[2].url : '',
                         "cover": albums[i].images[0] !== undefined ? albums[i].images[0].url : '',
                         "id": albums[i].id//,
-                        //"type": $scope.searchMode
                       })
                     }
                   }
@@ -128,14 +108,11 @@ MusicSearch.controller('MusicSearchCtrl', [ '$scope', '$timeout', '$http','Music
 
 
     // PLAYER
-
     $scope.audioObject = null;
     $scope.idAlbumPlaying = null;
-
     // Manage state playing
     $scope.isPlaying = false;
     $scope.isPaused  = false;
-
 
     $scope.playAlbum = function(idAlbum){
 
@@ -153,6 +130,7 @@ MusicSearch.controller('MusicSearchCtrl', [ '$scope', '$timeout', '$http','Music
       else
       {
         MusicSearchFactory.getAlbum(idAlbum).then(function(response){
+            // Instanstiating Audio
             $scope.audioObject = new Audio(response.data.tracks.items[0].preview_url);
             $scope.audioObject.play();
             $scope.isPlaying = true;
@@ -166,10 +144,8 @@ MusicSearch.controller('MusicSearchCtrl', [ '$scope', '$timeout', '$http','Music
       }
     }
 
-
     $scope.changePlayingState = function(state)
     {
-
         if(state === false)
         {
           if($scope.audioObject)
