@@ -1,6 +1,6 @@
 # :musical_note: Music Search :ear:
 
-Music Search is a few days projects to showcase the capabilities of the **Free** Spotify API features
+Music Search is a few days projects to showcase the capabilities of the **Free** Spotify API features.
 It could easily be extended to something serious with a Premium Account API.
 
 ## Installation
@@ -22,7 +22,7 @@ Hosted mode (required for current ProTractor specs) :
 
 Old-school, HTML file opening:
 
-As this's a Front-end only App, this could be tested through a Browser that natively support CORS.
+As this's a Front-end only App, this could be opened through a Browser that natively support CORS.
 Open index.html into your favorite browser
 
 
@@ -38,6 +38,8 @@ Open index.html into your favorite browser
 - [x] Artists results are shown under cards
 - [x] Extra artists information (e.g. genre, if available)
 - [x] Albums list through cards (simple alert of result)
+- [x] Functional testing (ProTractor/WebDriver Agent)
+- [x] Unit testing (Karma/Jasmine)
 - [ ] Saving/Loading Playlist in/from LocalStorage
 - [ ] Host a demo of the project (e.g. Github Pages)
 
