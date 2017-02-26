@@ -39,6 +39,7 @@ Open index.html into your favorite browser
 - [x] Extra artists information (e.g. genre, if available)
 - [x] Albums list through cards (simple alert of result)
 - [ ] Saving/Loading Playlist in/from LocalStorage
+- [ ] Host a demo of the project (e.g. Github Pages)
 
 
 ## Contributing
