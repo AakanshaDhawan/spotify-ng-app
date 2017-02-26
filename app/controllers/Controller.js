@@ -238,10 +238,6 @@ App.controller('MainCtrl', [
 
       }
 
-      $scope.checkTest = function(boolChecked){
-
-           alert(boolChecked)
-      }
 
   }
 

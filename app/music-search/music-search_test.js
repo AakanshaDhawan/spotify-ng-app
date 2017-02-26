@@ -35,9 +35,9 @@ describe('MusicSearch Testing', function() {
     expect(MusicSearchFactoryObj).toBeDefined();
   });
 
-  it('Method getName should be defined', function() {
-    expect(MusicSearchFactoryObj.getName).toBeDefined();
-  });
+  // it('Method getName should be defined', function() {
+  //   expect(MusicSearchFactoryObj.getName).toBeDefined();
+  // });
 
 
 
@@ -50,12 +50,12 @@ describe('MusicSearch Testing', function() {
   //   });
   // });
 
-  describe('test getName()', function() {
-    it('Test getName', function() {
-      // An intentionally failing test. No code within expect() will never equal 4.
-      expect(MusicSearchFactoryObj.getName()).toEqual("David");
-    });
-  })
+  // describe('test getName()', function() {
+  //   it('Test getName', function() {
+  //     // An intentionally failing test. No code within expect() will never equal 4.
+  //     expect(MusicSearchFactoryObj.getName()).toEqual("David");
+  //   });
+  // })
 
 
 

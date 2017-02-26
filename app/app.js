@@ -1,16 +1,1 @@
-App = angular.module('App', ['ngRoute',
-                                'spotify',
-                                'ngTagsInput',
-                                'ui.bootstrap',
-                                'angular-cardflow',
-                                'MusicSearch']);
-
-// App.directive("deferredCloak", function () {
-//     return {
-//         restrict: 'A',
-//         link: function (scope, element, attrs) {
-//             attrs.$set("deferredCloak", undefined);
-//             element.removeClass("deferred-cloak");
-//         }
-//     };
-// });
+App = angular.module('App', ['ngRoute', 'spotify', 'ngTagsInput', 'ui.bootstrap','angular-cardflow','MusicSearch']);
