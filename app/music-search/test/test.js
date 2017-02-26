@@ -1,9 +1,7 @@
 'use strict';
 
-
 describe('MusicSearch module Testing', function() {
   var MusicSearchFactoryObj;
-  //var $rootScope;
 
   // Before each test load our MusicSearch module
   beforeEach(angular.mock.module('MusicSearch'));
@@ -12,11 +10,7 @@ describe('MusicSearch module Testing', function() {
   // to our local MusicSearchFactoryObj variable
   beforeEach(inject(function(_MusicSearchFactory_) {
     MusicSearchFactoryObj = _MusicSearchFactory_;
-    //$rootScope = _$rootScope_;
   }));
-
-
-  // Factory
 
   // We're testing that Factory exists
   it('Factory should be defined', function() {
@@ -44,25 +38,42 @@ describe('MusicSearch module Testing', function() {
     expect(MusicSearchFactoryObj.getAlbum).toBeDefined();
   });
 
+  var $q;
+  var deferred;
 
+  // Testing returns from Factory methods
+  it('Method search artist should return a Promise', inject(function(_$q_) {
+    $q = _$q_;
+    deferred = _$q_.defer();
+    deferred.promise = MusicSearchFactoryObj.searchArtist('Johnny Cash');
+    expect(deferred.promise).not.toBe(undefined);
+  }));
 
+  it('Method chunk should be return an Array of sub-Arrays', inject(function(_$q_) {
+    var arrTest = [1,2,3];
+    var ret = MusicSearchFactoryObj.chunk(arrTest, 2);
+    expect(ret[0]).toEqual([1,2]);
+  }));
 
+  it('Method search searchArtistAlbums should return a Promise', inject(function(_$q_) {
+    $q = _$q_;
+    deferred = _$q_.defer();
+    deferred.promise = MusicSearchFactoryObj.searchArtistAlbums('7dGJo4pcD2V6oG8kP0tJRR');
+    expect(deferred.promise).not.toBe(undefined);
+  }));
 
-  // A set of tests for our Users.all() method
-  // describe('.all()', function() {
-  //   // A simple test to verify the method all exists
-  //   it('should exist', function() {
-  //     expect(MusicSearchFactoryObj.all).toBeDefined();
-  //   });
-  // });
+  it('Method searchAlbums should return a Promise', inject(function(_$q_) {
+    $q = _$q_;
+    deferred = _$q_.defer();
+    deferred.promise = MusicSearchFactoryObj.searchAlbums('Wicked Sensation');
+    expect(deferred.promise).not.toBe(undefined);
+  }));
 
-  // describe('test getName()', function() {
-  //   it('Test getName', function() {
-  //     // An intentionally failing test. No code within expect() will never equal 4.
-  //     expect(MusicSearchFactoryObj.getName()).toEqual("David");
-  //   });
-  // })
-
-
+  it('Method getAlbum  should return a Promise', inject(function(_$q_) {
+    $q = _$q_;
+    deferred = _$q_.defer();
+    deferred.promise = MusicSearchFactoryObj.getAlbum('62U7xIHcID94o20Of5ea4D');
+    expect(deferred.promise).not.toBe(undefined);
+  }));
 
 });
