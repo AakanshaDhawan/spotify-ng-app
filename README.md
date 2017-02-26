@@ -1,4 +1,4 @@
-# Music Search
+# :musical_note: Music Search :ear:
 
 Music Search is a few days projects to showcase the capabilities of the **Free** Spotify API features
 It could easily be extended to something serious with a Premium Account API.
