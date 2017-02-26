@@ -12,15 +12,18 @@ module.exports = function(config) {
       'node_modules/angular-spotify/dist/angular-spotify.min.js',
       'node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js',
       'node_modules/angular-module-touch/angular-touch.js',
+
       'lib/ng-tags-input.min.js',
       'lib/cardflow.min.js',
-      'app/music-search/music-search.js',
-      'app/music-search/music-search_test.js',
+
+      'app/music-search/main.js',
+      'app/music-search/controller/controller.js',
+      'app/music-search/directive/directive.js',
+      'app/music-search/factory/factory.js',
+      'app/music-search/route/route.js',
+
+      'app/music-search/test/test.js',
       'app/app.js',
-      'app/config/config.js',
-      'app/routes/Routes.js',
-      'app/controllers/Controller.js',
-      'app/services/Factory.js'
 
     ],
 
