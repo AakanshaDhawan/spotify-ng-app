@@ -1,5 +1,15 @@
-App.factory('MusicSearchFactory', function () {
-  var factory = {};
+App.factory('Factory', function () {
+  var _MusicSearch = {};
+
+    var _getName = function() {
+        return "David";
+    };
+
+    return{
+        getName: _getName,
+        MusicSearch: MusicSearch
+    };
+
   // var customers = [
   //   { name : 'Steve Jobs', city : 'San Francisco' },
   //   { name : 'Bill Gates', city : 'Medina' },
@@ -12,5 +22,5 @@ App.factory('MusicSearchFactory', function () {
   // factory.getCustomers = function () {
   //   return customers;
   // }
-  return factory;
+
 });

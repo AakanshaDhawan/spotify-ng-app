@@ -35,6 +35,8 @@ App.controller('MainCtrl', [
             //console.log(response.data.artists.items);
             $scope.resultsArtistSearch = response.data.artists.items;
 
+
+
             // for(var i=0; i < $scope.resultsArtistSearch.length ; i++)
             // {
             //     if($scope.resultsArtistSearch[i].images[0].url !== undefined)
