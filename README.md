@@ -38,12 +38,8 @@ Open index.html into your favorite browser
 - [x] Artists results are shown under cards
 - [x] Extra artists information (e.g. genre, if available)
 - [x] Albums list through cards (simple alert of result)
-- [x] Functional and Unit testing
-- [o] Saving/Loading Playlist in/from LocalStorage
+- [ ] Saving/Loading Playlist in/from LocalStorage
 
-## Credits
-
-David Barrat
 
 ## Contributing
 
@@ -52,6 +48,11 @@ David Barrat
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
+
+
+## Credits
+
+David Barrat
 
 ## License
 
