@@ -20,6 +20,11 @@ Hosted mode (required for current ProTractor specs) :
 
 `make start`
 
+Then you should see the App running at :
+
+[localhost:8000]: http://localhost:8000
+
+
 Old-school, HTML file opening:
 
 As this's a Front-end only App, this could be opened through a Browser that natively support CORS.
