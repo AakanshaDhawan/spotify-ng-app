@@ -30,9 +30,13 @@ Old-school, HTML file opening:
 As this's a Front-end only App, this could be opened through a Browser that natively support CORS.
 Open index.html into your favorite browser
 
-## Screenshot
+## Screenshots
 
-[![Capture d’écran 2017-02-26 à 16.29.57.png](https://s31.postimg.org/yn27j8m6j/Capture_d_e_cran_2017_02_26_a_16_29_57.png)](https://postimg.org/image/yaatd23wn/)
+<img src="https://s22.postimg.org/qjygl1gr5/Capture_d_e_cran_2017_02_26_a_16_29_57.png)" width='400' /> <br>
+<img src="https://s22.postimg.org/s0ekgx91t/Capture_d_e_cran_2017_02_26_a_16_37_08.png)" width='400' /> <br>
+
+
+
 
 ## Unit testing
 
