@@ -6,8 +6,10 @@
 MusicSearch.controller('MusicSearchCtrl', [ '$scope', '$timeout', '$http','MusicSearchFactory',
   function($scope, $timeout,$http, MusicSearchFactory) {
 
-    // Tags for Album Search
-    $scope.tags = [];
+    // Init Tags for Album Search
+   $scope.tags = [];
+   //$scope.tags = localStorage.getItem("playlist") !== undefined ? JSON.parse(localStorage.getItem("playlist"))  : [];
+
     // Input value for Artist Search
     $scope.inputArtist = "";
     // Storing the data from response API (Artist)
@@ -144,6 +146,8 @@ MusicSearch.controller('MusicSearchCtrl', [ '$scope', '$timeout', '$http','Music
       }
     }
 
+    // Change the playing state
+    // Will update the button displayed
     $scope.changePlayingState = function(state)
     {
         if(state === false)
@@ -164,5 +168,13 @@ MusicSearch.controller('MusicSearchCtrl', [ '$scope', '$timeout', '$http','Music
           }
         }
     }
+
+    // Make usage of LocalStorage for saving a Playlist
+    $scope.savePlaylist = function(){
+        localStorage.setItem("playlist", JSON.stringify($scope.tags));
+        alert("Playlist saved");
+    }
+
+
 
 }])// End controller

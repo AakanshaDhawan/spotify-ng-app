@@ -30,6 +30,10 @@ Old-school, HTML file opening:
 As this's a Front-end only App, this could be opened through a Browser that natively support CORS.
 Open index.html into your favorite browser
 
+## Screenshot
+
+[![Capture d’écran 2017-02-26 à 16.29.57.png](https://s31.postimg.org/yn27j8m6j/Capture_d_e_cran_2017_02_26_a_16_29_57.png)](https://postimg.org/image/yaatd23wn/)
+
 ## Unit testing
 
 `make test_karma`
@@ -60,8 +64,14 @@ then, you should be able to run ProTractor :
 - [x] Albums list through cards (simple alert of result)
 - [x] Functional testing (ProTractor/WebDriver Agent)
 - [x] Unit testing (Karma/Jasmine)
-- [ ] Saving/Loading Playlist in/from LocalStorage
+- [x] Saving/Loading Playlist in/from LocalStorage
 - [ ] Host a demo of the project (e.g. Github Pages)
+
+## Improvments
+
+- More tests
+- Improving Coverflow UX (Bug when playlist loaded from localStorage, vertical display)
+- From Artists results, album button should open a modal, and on this modal with albums, user should be able to select which album he/she wants to add to his/her playlist
 
 
 ## Contributing

@@ -6,12 +6,21 @@
     <h1>Music Search</h1>
     <p>
        Create a dynamic playlist by adding albums to the field below.
+
+       <div style="float:right">
+         <button class="btn btn-success btn-large" ng-click="savePlaylist()"><i class="fa fa-save"></i> Save Playlist</button>
+       </div>
+
      <br/>
      <br/>
+
+
      <div style="float:left">
        Search per Artist  <input id="radioArtists" type="radio" name="searchType" ng-value="artists" checked=""  ng-click="switchSearchMode()" />
        <span style="margin-left:30px">Search per Album</span>  <input id="radioAlbums" type="radio" name="searchType" ng-value="albums" ng-click="switchSearchMode()" />
      </div>
+
+
 
     <br/>
     <br/>
@@ -86,7 +95,7 @@
       <pane title="Player">
         <br/>
         <br/>
-        <cardflow model="tags" mode="swipeSnapKinetic" >
+        <cardflow model="tags" mode="swipe" >
             <div ng-id="{{card.id}}" class="cardflow-card" ng-repeat="card in tags" style="background-image: url( {{card.cover}} )" ng-click="playAlbum(card.id)">
                 {{ card.title }}
             </div>
