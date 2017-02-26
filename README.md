@@ -39,7 +39,7 @@ Open index.html into your favorite browser
 - [x] Extra artists information (e.g. genre, if available)
 - [x] Albums list through cards (simple alert of result)
 - [x] Functional and Unit testing
-- [] Saving/Loading Playlist in/from LocalStorage
+- [o] Saving/Loading Playlist in/from LocalStorage
 
 ## Credits
 
