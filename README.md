@@ -3,6 +3,11 @@
 Music Search is a few days projects to showcase the capabilities of the **Free** Spotify API features.
 It could easily be extended to something serious with a Premium Account API.
 
+## Demo
+
+[Live Demo](https://dbrrt.github.io/music-search/)
+
+
 ## Installation
 
 ###Linux, OS X
@@ -69,7 +74,7 @@ then, you should be able to run ProTractor :
 - [x] Functional testing (ProTractor/WebDriver Agent)
 - [x] Unit testing (Karma/Jasmine)
 - [x] Saving/Loading Playlist in/from LocalStorage
-- [ ] Host a demo of the project (e.g. Github Pages)
+- [x] Host a demo of the project (e.g. Github Pages)
 
 ## Improvments
 
