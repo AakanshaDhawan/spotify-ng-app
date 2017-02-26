@@ -36,28 +36,6 @@
         <!-- <script type="text/javascript" src="app/services/Factory.js"></script> -->
 
 
-        <script type="text/ng-template" id="tag-template">
-          <div class="tag-template">
-            <div class="left-panel">
-              <img ng-src={{data.thumbnail}} ng-if="data.thumbnail" style="width:15px" />
-            </div>
-            <div class="right-panel">
-              <span>{{$getDisplayText()}}</span>
-              <a class="remove-button" ng-click="$removeTag()">&#10006;</a>
-            </div>
-          </div>
-        </script>
-
-        <script type="text/ng-template" id="autocomplete-template">
-          <div class="autocomplete-template">
-            <div class="left-panel">
-              <img ng-src={{data.thumbnail}} />
-            </div>
-            <div class="right-panel">
-              <span ng-bind-html="$highlight($getDisplayText())"></span>
-            </div>
-          </div>
-        </script>
 
 
       </body>

@@ -21,7 +21,6 @@ describe('MusicSearch Testing', function() {
   var MusicSearchFactoryObj;
   var $rootScope;
 
-
   // Before each test load our api.users module
   beforeEach(angular.mock.module('MusicSearch'));
 
@@ -44,12 +43,12 @@ describe('MusicSearch Testing', function() {
 
 
   // A set of tests for our Users.all() method
-  describe('.all()', function() {
-    // A simple test to verify the method all exists
-    it('should exist', function() {
-      expect(MusicSearchFactoryObj.all).toBeDefined();
-    });
-  });
+  // describe('.all()', function() {
+  //   // A simple test to verify the method all exists
+  //   it('should exist', function() {
+  //     expect(MusicSearchFactoryObj.all).toBeDefined();
+  //   });
+  // });
 
   describe('test getName()', function() {
     it('Test getName', function() {

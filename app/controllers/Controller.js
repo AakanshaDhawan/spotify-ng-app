@@ -6,7 +6,7 @@ App.controller('MainCtrl', [
     $scope.inputArtist = "";
 
     $scope.resultsArtistSearch = [];
-    $scope.resultsArtistSearchwCover = [];
+    //$scope.resultsArtistSearchwCover = [];
 
     // Will allow to display properly rows in the view
     $scope.chunk = function(arr, size) {
@@ -32,23 +32,9 @@ App.controller('MainCtrl', [
             responseType: "json"
           }).then(function(response, status) {
             var result = response.data.items;
-            //console.log(response.data.artists.items);
             $scope.resultsArtistSearch = response.data.artists.items;
-
-
-
-            // for(var i=0; i < $scope.resultsArtistSearch.length ; i++)
-            // {
-            //     if($scope.resultsArtistSearch[i].images[0].url !== undefined)
-            //     {
-            //        $scope.resultsArtistSearchwCover.push($scope.resultsArtistSearch[i])
-            //     }
-            // }
-            //
             $scope.chunkedDataArtistSearch = $scope.chunk($scope.resultsArtistSearch, 4);
-            // console.log($scope.chunkedDataArtistSearch)
           })
-
       }
       else {
           $scope.resultsArtistSearch = []
@@ -259,50 +245,52 @@ App.controller('MainCtrl', [
 
   }
 
-]).directive('tabs', function() {
-    // Directive for Bootstrap tabs
-    return {
-      restrict: 'E',
-      transclude: true,
-      scope: {},
-      controller: [ "$scope", function($scope) {
-        var panes = $scope.panes = [];
+])
 
-        $scope.select = function(pane) {
-          angular.forEach(panes, function(pane) {
-            pane.selected = false;
-          });
-          pane.selected = true;
-        }
-
-        this.addPane = function(pane) {
-          if (panes.length == 0) $scope.select(pane);
-          panes.push(pane);
-        }
-      }],
-      template:
-        '<div class="tabbable">' +
-          '<ul class="nav nav-tabs">' +
-            '<li ng-repeat="pane in panes" ng-class="{active:pane.selected}">'+
-              '<a href="" ng-click="select(pane)">{{pane.title}}</a>' +
-            '</li>' +
-          '</ul>' +
-          '<div class="tab-content" ng-transclude></div>' +
-        '</div>',
-      replace: true
-    };
-  }).directive('pane', function() {
-    return {
-      require: '^tabs',
-      restrict: 'E',
-      transclude: true,
-      scope: { title: '@' },
-      link: function(scope, element, attrs, tabsCtrl) {
-        tabsCtrl.addPane(scope);
-      },
-      template:
-        '<div class="tab-pane" ng-class="{active: selected}" ng-transclude>' +
-        '</div>',
-      replace: true
-    };
-  })
+// App.directive('tabs', function() {
+//     // Directive for Bootstrap tabs
+//     return {
+//       restrict: 'E',
+//       transclude: true,
+//       scope: {},
+//       controller: [ "$scope", function($scope) {
+//         var panes = $scope.panes = [];
+//
+//         $scope.select = function(pane) {
+//           angular.forEach(panes, function(pane) {
+//             pane.selected = false;
+//           });
+//           pane.selected = true;
+//         }
+//
+//         this.addPane = function(pane) {
+//           if (panes.length == 0) $scope.select(pane);
+//           panes.push(pane);
+//         }
+//       }],
+//       template:
+//         '<div class="tabbable">' +
+//           '<ul class="nav nav-tabs">' +
+//             '<li ng-repeat="pane in panes" ng-class="{active:pane.selected}">'+
+//               '<a href="" ng-click="select(pane)">{{pane.title}}</a>' +
+//             '</li>' +
+//           '</ul>' +
+//           '<div class="tab-content" ng-transclude></div>' +
+//         '</div>',
+//       replace: true
+//     };
+//   }).directive('pane', function() {
+//     return {
+//       require: '^tabs',
+//       restrict: 'E',
+//       transclude: true,
+//       scope: { title: '@' },
+//       link: function(scope, element, attrs, tabsCtrl) {
+//         tabsCtrl.addPane(scope);
+//       },
+//       template:
+//         '<div class="tab-pane" ng-class="{active: selected}" ng-transclude>' +
+//         '</div>',
+//       replace: true
+//     };
+//   })

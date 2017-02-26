@@ -1,10 +1,10 @@
 App.config(function ($routeProvider) {
   $routeProvider
-    .when('/',
+    .when('/home',
       {
         controller: 'MainCtrl',
         templateUrl: 'app/templates/main.html'
       }
     )
-    .otherwise( { redirectTo: '/error' } );
+  //  .otherwise( { redirectTo: '/error' } );
 });
