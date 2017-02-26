@@ -15,4 +15,12 @@ describe('testing music-search app', function() {
     toMatch(/Music Search/);
   });
 
+  it('should display cards after user inputed text in Field', function() {
+    browser.get('http://localhost:8000/');
+    element.all(by.css('.artist-input')).sendKeys('Motor').sendKeys('head')
+    // Checks that artists cards are displayed
+    expect(browser.isElementPresent(by.css('card')))
+  });
+
+
 });
