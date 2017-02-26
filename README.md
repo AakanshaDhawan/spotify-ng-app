@@ -55,7 +55,7 @@ Open index.html into your favorite browser
 
 ## Credits
 
-David Barrat
+David Barrat - FEB2017
 
 ## License
 
