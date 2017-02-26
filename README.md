@@ -45,7 +45,8 @@ then, you should be able to run ProTractor :
 - [x] Angular SPA
 - [x] Maintainable arborescence
 - [x] Bootstrap Integration
-- [x] Coverflowed Playlist
+- [x] ***Coverflowed*** Playlist
+- [x] Play/Pause button
 - [x] Integration Spotify Endpoints
 - [x] Combined field for searching both Artists/Albums
 - [x] Typeahead Album search (w/ cover preview)
