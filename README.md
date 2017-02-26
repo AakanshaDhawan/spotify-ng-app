@@ -25,6 +25,20 @@ Old-school, HTML file opening:
 As this's a Front-end only App, this could be opened through a Browser that natively support CORS.
 Open index.html into your favorite browser
 
+## Unit testing
+
+`make test_karma`
+
+## Functional testing
+
+You might need to update first :
+
+`make update_webdriveragent`
+
+then, you should be able to run ProTractor :
+
+`make test_protractor`
+
 
 ## Features to be implemented
 
