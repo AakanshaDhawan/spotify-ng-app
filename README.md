@@ -22,7 +22,7 @@ Hosted mode (required for current ProTractor specs) :
 
 Then you should see the App running at :
 
-[localhost:8000]: http://localhost:8000
+[localhost:8000](http://localhost:8000)
 
 
 Old-school, HTML file opening:
