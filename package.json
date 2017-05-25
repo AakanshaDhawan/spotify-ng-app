@@ -4,24 +4,24 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "angular": "~1.4",
-    "angular-masonry": "^0.16.0",
+    "angular": "~1.6",
+    "angular-masonry": "^0.17.0",
     "angular-mocks": "^1.6.2",
     "angular-module-touch": "^1.2.19",
-    "angular-route": "~1.2.6",
+    "angular-route": "~1.6.4",
     "angular-spotify": "^1.4.1",
     "angular-ui-bootstrap": "^2.5.0",
     "jquery": "^3.1.1"
   },
   "devDependencies": {
-    "http-server": "^0.9.0",
+    "http-server": "^0.10.0",
     "jasmine-core": "^2.4.1",
-    "karma": "^0.13.22",
-    "karma-chrome-launcher": "^0.2.3",
-    "karma-firefox-launcher": "^0.1.7",
-    "karma-jasmine": "^0.3.8",
-    "karma-junit-reporter": "^0.4.2",
-    "protractor": "^4.0.9"
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-junit-reporter": "^1.2.0",
+    "protractor": "^5.1.2"
   },
   "scripts": {
     "test": "karma start test/karma.conf.js",
