@@ -4,9 +4,8 @@ Music Search is a few days projects to showcase the capabilities of the **Free**
 It could easily be extended to something serious with a Premium Account API.
 
 ## Demo
-
-[Live Demo](https://dbrrt.github.io/music-search/)
-
+Requires a Token
+~~[Live Demo](https://dbrrt.github.io/music-search/)~~
 
 ## Installation
 
